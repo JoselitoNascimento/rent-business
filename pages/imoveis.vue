@@ -1,5 +1,6 @@
 <template>
   <v-row>
+    <h3 class="page-title">Imóveis</h3>
     <v-col class="text-center">
       <img
         src="/v.png"

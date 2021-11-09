@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//datasource db {
+//  provider = "sqlite"
+//  url      = "file:./db/dbRentProperties.db" 
+//}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Entidade {
+  id        Int         @id @default(autoincrement())
+  cnpj_cpf  String      @db.VarChar(200)
+  nome      String      @db.VarChar(200)
+  fantasia  String      @db.VarChar(200)
+  insc_mun  String      @db.VarChar(50)
+  insc_est  String      @db.VarChar(50)
+  status    String      @db.VarChar(1)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  email     String      @db.VarChar(200)
+  password  String      @db.VarChar(200)
+  username  String      @db.VarChar(100)
+  category  Int
+  status    String      @db.VarChar(1)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
